@@ -29,7 +29,7 @@ def call(Map configMap) {
                 }
             }    
         }
-        stage('Test'){
+        stage('Test'){ 
             steps {
                 script {
                       echo "Testing"
