@@ -162,7 +162,7 @@ def call(Map configMap){
                         ],
                         propagate: false,  // even SG fails VPC will not be effected
                         wait: false // VPC will not wait for SG pipeline completion
-                    }
+                    } 
                 }
             }
             
