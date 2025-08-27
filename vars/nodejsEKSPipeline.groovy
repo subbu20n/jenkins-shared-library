@@ -83,7 +83,7 @@ def call(Map configMap){
                         ).trim()
 
                         // Parse JSON
-                        def json = readJSON text: response
+                        def json = readJSON text: response 
 
                         // Filter alerts by severity
                         def criticalOrHigh = json.findAll { alert ->
