@@ -76,7 +76,7 @@ def call(Map configMap){
                         def response = sh(
                             script: """
                                 curl -s -H "Accept: application/vnd.github+json" \
-                                    -H "Authorization: token ${GITHUB_TOKEN}" \
+                                    -H "Authorization: 'token $GITHUB_TOKEN'" \
                                     https://api.github.com/repos/subbu20n/catalogue/dependabot/alerts
                             """,
                             returnStdout: true
