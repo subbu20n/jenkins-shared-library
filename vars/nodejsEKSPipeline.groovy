@@ -65,7 +65,7 @@ def call(Map configMap){
                     timeout(time: 1, unit: 'HOURS') {
                     waitForQualityGate abortPipeline: true }
                 }
-            } *//* 
+            } */
             stage('Check Dependabot Alerts') {
                environment { 
                     GITHUB_TOKEN = credentials('github-token')
@@ -103,7 +103,7 @@ def call(Map configMap){
                    }
                  }
                }
-            } */
+            } 
             stage('Docker Build') {
                 steps {
                     script {
