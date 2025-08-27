@@ -77,13 +77,13 @@ def call(Map configMap){
                             script: """
                                 curl -s -H "Accept: application/vnd.github+json" \
                                     -H "Authorization: token ${GITHUB_TOKEN}" \
-                                    https://api.github.com/repos/subbu20n/catalogue/dependabot/alerts
+                                    https://api.github.com/repos/daws-84s/catalogue/dependabot/alerts
                             """,
                             returnStdout: true
                         ).trim()
 
                         // Parse JSON
-                        def json = readJSON text: response 
+                        def json = readJSON text: response
 
                         // Filter alerts by severity
                         def criticalOrHigh = json.findAll { alert ->
@@ -108,6 +108,7 @@ def call(Map configMap){
                                 aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${ACC_ID}.dkr.ecr.us-east-1.amazonaws.com
                                 docker build -t ${ACC_ID}.dkr.ecr.us-east-1.amazonaws.com/${PROJECT}/${COMPONENT}:${appVersion} .
                                 docker push ${ACC_ID}.dkr.ecr.us-east-1.amazonaws.com/${PROJECT}/${COMPONENT}:${appVersion}
+                                aws ecr wait image-scan-complete --repository-name ${PROJECT}/${COMPONENT} --image-id imageTag=${appVersion} --region ${REGION}
                             """
                         }
                     }
@@ -153,8 +154,8 @@ def call(Map configMap){
                 }
                 steps {
                     script {
-                        build job: 'catalogue-cd',
-                        // build job: "../${COMPONENT}-cd",
+                        //build job: 'catalogue-cd',
+                        build job: "../${COMPONENT}-cd",
                         parameters: [
                             string(name: 'appVersion', value: "${appVersion}"),
                             string(name: 'deploy_to', value: 'dev')
