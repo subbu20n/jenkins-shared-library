@@ -164,7 +164,7 @@ def call(Map configMap){
                         wait: false // VPC will not wait for SG pipeline completion
                     } 
                 }
-            }  
+            }   
             
         }
 
