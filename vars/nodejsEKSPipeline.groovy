@@ -108,7 +108,7 @@ def call(Map configMap){
                                 aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${ACC_ID}.dkr.ecr.us-east-1.amazonaws.com
                                 docker build -t ${ACC_ID}.dkr.ecr.us-east-1.amazonaws.com/${PROJECT}/${COMPONENT}:${appVersion} .
                                 docker push ${ACC_ID}.dkr.ecr.us-east-1.amazonaws.com/${PROJECT}/${COMPONENT}:${appVersion}
-                                #aws ecr wait image-scan-complete --repository-name ${PROJECT}/${COMPONENT} --image-id imageTag=${appVersion} --region ${REGION}
+                              /*   aws ecr wait image-scan-complete --repository-name ${PROJECT}/${COMPONENT} --image-id imageTag=${appVersion} --region ${REGION} */
                             """
                         }
                     }
@@ -150,7 +150,7 @@ def call(Map configMap){
             } */
             stage('Trigger Deploy') {
                 when{
-                    expression { params.deploy }
+                    expression { params.deploy } 
                 }
                 steps {
                     script {
@@ -181,4 +181,4 @@ def call(Map configMap){
             }
         }
     }
-}
+} 
