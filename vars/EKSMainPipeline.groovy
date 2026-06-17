@@ -22,7 +22,7 @@ def call(Map configMap) {
             )
         }
         environment {
-            appVersion   = ""
+            appVersion   = ""  
             shortCommit  = ""
             acc_id       = "160885265516"
             project      = configMap.get("project")
@@ -160,7 +160,7 @@ def call(Map configMap) {
                                 REPO_PATH=$(git remote get-url origin | sed 's/.*github\\.com[\\/:]//;s/\\.git$//')
                                 git remote set-url origin https://$GITHUB_TOKEN@github.com/$REPO_PATH
                                 git tag $APP_VERSION
-                                git push origin $APP_VERSION
+                                git push origin $APP_VERSION 
                             '''
                         }
                     }
