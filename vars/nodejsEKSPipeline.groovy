@@ -10,7 +10,7 @@ def call(Map configMap){
             PROJECT = configMap.get('project')
             COMPONENT = configMap.get('component')
         }
-        options {
+        options {  
             timeout(time: 30, unit: 'MINUTES') 
             disableConcurrentBuilds()
         }
