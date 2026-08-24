@@ -18,7 +18,7 @@ def call(Map configMap) {
                 token: "${configMap.get('project')}-main-pipeline",
                 causeString: 'Triggered by Jira — $deploy_to deploy', 
                 printContributedVariables: true,
-                printPostContent: true
+                printPostContent: true     
             )
         }
         environment {
