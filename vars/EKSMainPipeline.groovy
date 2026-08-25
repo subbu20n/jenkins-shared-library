@@ -19,7 +19,7 @@ def call(Map configMap) {
                 causeString: 'Triggered by Jira — $deploy_to deploy', 
                 printContributedVariables: true,
                 printPostContent: true     
-            )
+            )    
         }
         environment {
             appVersion   = ""  
